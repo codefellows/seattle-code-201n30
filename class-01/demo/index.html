@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLASS 01</title>
+  <style>
+    li {
+      color: blue;
+      font-size: 20px;
+    }
+    #listTwo {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="background-color:black; color: white;">TOP LEVEL HEADER</h1>
+  </header>
+  <main>
+    <h2 style="background-color: blueviolet; border-radius: 10px;">Less important header</h2>
+    <p>Tell me your name</p>
+    <p>How old are you?</p>
+    <ul>
+      <li style="color:brown;">I am the first piece of content</li>
+      <li id="listTwo">I am the second piece of content</li>
+    </ul>
+    <ol>
+      <li>Item one</li>
+      <li>Item two</li>
+    </ol>
+  </main>
+  <footer>
+    &copy; Code Fellows
+  </footer>
+  <script>
+    let response = prompt('Tell me your name');
+    let responseTwo = prompt('how old are you?')
+    alert('Hello ' + response + ' You are ' + responseTwo + 'years old');
+    console.log(response);
+    console.log('Hello World')
+  </script>
+</body>
+</html>
