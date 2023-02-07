@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scales=1.0">
+        <title>Class 1 Lab</title>
+        <!-- internal CSS styling via style element-->
+        <style>
+            h1 {
+                background-color:blueviolet;
+                color:aquamarine;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main>
+            <h1>Class 1 Lab</h1>
+            <!--inline styling via style attribute on element-->
+            <!-- CSS properties and values for styling -->
+            <p style="background-color:aqua; color:blue">What is your name?</p>
+            <p style="background-color:aquamarine; color:blueviolet"> Where are you from?</p>
+            <p style="background-color:orange; color:maroon">What year were you born?</p>
+            <p style="background-color:chartreuse; color:purple">What is your favorite color?</p>
+        </main>
+        <footer>
+            &copy; Emily Greason
+        </footer>
+  <script>
+    // variable stores the input from the prompt
+    // this will be a string
+    let name = prompt('What is your name?');
+    let city = prompt('Where are you from');
+    let year = prompt('What year were you born?');
+    let color = prompt('What is your favorite color?');
+    // concatenating all of the strings together
+    alert('Hello ' + name + '. You are from ' + city + '. You were born in ' + year + '. Your favorite color is ' + color + ' .');
+    // console log prints the ouput to the console
+    // the console is a tool which is mainly used to log information
+    // enables us to interact with a web page and debug
+    console.log(name);
+    console.log(city);
+    console.log(year);
+    console.log(color);
+  </script>
+</body>
+</html>
