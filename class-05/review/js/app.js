@@ -16,7 +16,8 @@ while(numberOfGuesses){
     alert('too high');
   } else if(response < 10){
     alert('too low');
-  } else {
+    // we do need the below else if to account for values that do not equate to numerical data types
+  } else if(myNumber === response){
     alert('You got it right! 12 points for Gryffindor');
     score++;
     break;
@@ -28,6 +29,8 @@ while(numberOfGuesses){
 }
 
 let userAttempts = 6;
+// we also made need an additional boolean to keep lines of code from running
+// let correct = false;
 let myAnswers = ['grapes of wrath', 'all the light we cannot see', 'the overstory'];
 
 // my while loop controls the game
@@ -42,8 +45,15 @@ while(userAttempts) {
       alert('Yes! What a great book!');
       // break;
       userAttempts = 0;
+    //here we can account for whether the value is correct if this additional boolean is necessary
+    // correct = true;
     }
   }
 }
+
+//we can then utilize another notification based upon the correct conditional
+// if(!correct){
+//   alert('you are out of attempts, but you could have guessed...' + myAnswers)
+// }
 
 
