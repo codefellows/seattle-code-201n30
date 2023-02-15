@@ -1,0 +1,55 @@
+body {
+  height: 1500px;
+}
+
+.parent-element {
+  border: solid 5px darkblue;
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+
+.relative {
+  position: relative;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border: solid 5px maroon;
+  background-color: linen;
+  display: inline-block;
+  top: 40px;
+  left: 40px;
+  /* z-index: -1; */
+}
+
+.fixed {
+  position: fixed;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border: solid 5px maroon;
+  background-color: lavenderblush;
+  display: inline-block;
+  top: 40px;
+  right: 40px;
+}
+
+.absolute {
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border: solid 5px maroon;
+  background-color: cyan;
+  display: inline-block;
+  top: 40px;
+  left: 250px;
+}
+
+footer {
+  position: sticky;
+  background-color: maroon;
+  border: solid 5px maroon;
+  height: 100px;
+  top: 500px;
+}
