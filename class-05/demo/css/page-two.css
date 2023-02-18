@@ -1,0 +1,8 @@
+body {
+  height: 1220px;
+  background-image: url("../assets/mountains.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  /* background-size:300px 100px; */
+}
