@@ -97,3 +97,6 @@ innerHTML = "<h2>Hey I am an H2 with Content</h2>"
 // thus h2 is appended to the article element
 articleElem.appendChild(h2Elem)
 ```
+
+- [objects repl](https://replit.com/@StephniHill/object-demo#index.js)
+- [whiteboard](https://www.figma.com/file/pIV89OAHFT3YAG61E6gFwo/DOM?node-id=0%3A1&t=ILfW3tC3U2fdZWZ4-1)
