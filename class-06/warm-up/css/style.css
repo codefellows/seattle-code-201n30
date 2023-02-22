@@ -1,0 +1,29 @@
+h1 {
+  font-size: 50px;
+  text-align: center;
+  margin: 20px;
+}
+
+h2 {
+  font-size: 30px;
+  text-align: center;
+  margin: 20px;
+}
+
+section {
+  max-width: fit-content;
+  margin: auto;
+}
+
+table {
+  border: 5px solid black;
+  padding: 10px;
+}
+
+th, td, tr {
+  margin-top: 5px;
+  height: 20px;
+  border: 2px solid black;
+  padding: 10px;
+  text-align: center;
+}
