@@ -50,7 +50,7 @@ let myCalendar = {
       trBodyElement.appendChild(rowTdElement);
       rowTdElement.textContent = this.weeksInMonth[i];
 
-      for(let i = 0; i < this.daysOfWeek.length; i++){
+      for(let j = 0; j < this.daysOfWeek.length; j++){
         const tdElem = document.createElement('td');
         trBodyElement.appendChild(tdElem);
       }
