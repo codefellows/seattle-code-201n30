@@ -30,7 +30,6 @@ let woofles = {
     let articleElem = document.createElement('article');
     sectionElem.appendChild(articleElem);
 
-    // I need an h3 => I want it to be the name of my puppy
     let h3Elem = document.createElement('h3');
     h3Elem.textContent = this.name;
     articleElem.appendChild(h3Elem);
@@ -63,11 +62,11 @@ let woofles = {
 let spud = {
   name: 'Spud',
   age: 0,
-  description: 'sweet frenchie',
+  description: 'sweet frenchie bebe',
   interests: ['screaming', 'snuggling', 'nibbling'],
   isGoodWithDogs: true,
-  isGoodWithCats: true,
-  isGoodWithKids: true,
+  isGoodWithCats: false,
+  isGoodWithKids: false,
   photo: 'img/spud.jpg',
   getAge: function() {
     this.age = `${randomAge(3, 12)} months old`
@@ -76,7 +75,6 @@ let spud = {
     let articleElem = document.createElement('article');
     sectionElem.appendChild(articleElem);
 
-    // I need an h3 => I want it to be the name of my puppy
     let h3Elem = document.createElement('h3');
     h3Elem.textContent = this.name;
     articleElem.appendChild(h3Elem);
@@ -112,7 +110,7 @@ let ralph = {
   description: 'german shephard pup',
   interests: ['bacon', 'shredding', 'nuzzling'],
   isGoodWithDogs: true,
-  isGoodWithCats: true,
+  isGoodWithCats: false,
   isGoodWithKids: true,
   photo: 'img/ralph.jpg',
   getAge: function() {
@@ -122,7 +120,6 @@ let ralph = {
     let articleElem = document.createElement('article');
     sectionElem.appendChild(articleElem);
 
-    // I need an h3 => I want it to be the name of my puppy
     let h3Elem = document.createElement('h3');
     h3Elem.textContent = this.name;
     articleElem.appendChild(h3Elem);

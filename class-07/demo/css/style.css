@@ -105,8 +105,23 @@ div:last-of-type{
   bottom: 15px;
   background-color: aliceblue;
   color: black;
-  border: 3px solid skyblue;
+  border: 3px solid plum;
   border-radius: 5px;
+}
+
+table {
+  position: relative;
+  border: 1px solid skyblue;
+  max-width: fit-content;
+  max-height: fit-content;
+  margin: 15%;
+  bottom: 5px;
+
+}
+
+th, td {
+  padding: 5px;
+  border: 1px solid skyblue;
 }
 
 p, li {
