@@ -2,8 +2,12 @@
 
 // >>>>>>> WINDOW INTO DOM
 
-let sectionElem = document.getElementById('sales-section')
+// let sectionElem = document.getElementById('sales-section')
 let salesTable = document.getElementById('sales-table');
+// I will need a table body
+let tbodyElem = document.createElement('tbody');
+salesTable.appendChild(tbodyElem);
+
 
 // >>>>>>> GLOBAL VARIABLES
 
@@ -12,6 +16,29 @@ let allStores = [];
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// I will need a separate render function to render my table header
+function renderHeader(){
+  // My table will have have a thead to start
+  let theadElem = document.createElement('thead');
+  salesTable.appendChild(theadElem);
+  // This will contain a table row
+  let trHeaderElem = document.createElement('tr');
+  theadElem.appendChild(trHeaderElem);
+  // I need an empty cell to start
+  let thFirstCell = document.createElement('th');
+  trHeaderElem.appendChild(thFirstCell);
+  // Each cell of my table header will contain one of the hours from my array
+  for(let i = 0; i < hours.length; i++){
+    let thElem = document.createElement('th');
+    trHeaderElem.appendChild(thElem);
+    thElem.textContent = hours[i];
+  }
+  // I need a "total" for my last cell
+  let thFinalCell = document.createElement('th');
+  trHeaderElem.appendChild(thFinalCell);
+  thFinalCell.textContent = 'Total';
 }
 
 // >>>>>> CONSTRUCTOR FUNCTION
@@ -44,47 +71,67 @@ Store.prototype.calculateTotal = function () {
 
 Store.prototype.render = function () {
 
-  let articleElem = document.createElement('article');
-  sectionElem.appendChild(articleElem);
+  // Each row will be for each city
+  let trBodyElem = document.createElement('tr');
+  tbodyElem.appendChild(trBodyElem);
 
-  let h2Elem = document.createElement('h2');
-  articleElem.appendChild(h2Elem);
-  h2Elem.textContent = this.city;
+  // The first cell will be the name of my city
+  let tdCityElem = document.createElement('td');
+  trBodyElem.appendChild(tdCityElem);
+  tdCityElem.textContent = this.city;
 
-  let ulElem = document.createElement('ul');
-  articleElem.appendChild(ulElem);
-
+  // The following cells will correspond with with the hour and contain sales from that hour
   for (let i = 0; i < this.cookiesPerHour.length; i++) {
-    let liElem = document.createElement('li');
-    ulElem.appendChild(liElem);
-    liElem.textContent = `${hours[i]}:  ${this.cookiesPerHour[i]}`;
+    let tdSalesElem = document.createElement('td');
+    trBodyElem.appendChild(tdSalesElem);
+    tdSalesElem.textContent = this.cookiesPerHour[i];
   }
 
-  let lastLiElem = document.createElement('li');
-  ulElem.appendChild(lastLiElem);
-  lastLiElem.textContent = `Total: ${this.total}`;
-
-  // My table will have have a thead to start
-  // This will contain a table row
-  // Each cell of my table header will contain one of the hours from my array
-
-  // I will need a table body
-  // Each row will be for each city
-  // The first cell will be the name of my city
-  // The following cells will correspond with with the hour and contain sales from that hour
   // My last cell will be the total of for that location's sales
-
-  // My table needs a footer
-  // I will need a row
-  // The first cell will say "Totals or something"
-  // This footer will add up all of the hourly sales from every location
-  // The final cell will be a grand total of all locations daily sales
+  let tdTotalElem = document.createElement('td');
+  trBodyElem.appendChild(tdTotalElem);
+  tdTotalElem.textContent = this.total;
 
 }
 
-// I will need a separate render function to render my table header
-
 // I will need a separate render function to render my table footer
+function renderFooter(){
+  // My table needs a footer
+  let tfootElem = document.createElement('tfoot');
+  salesTable.appendChild(tfootElem);
+  // I will need a row
+  let trFooterElem = document.createElement('tr');
+  tfootElem.appendChild(trFooterElem);
+  // The first cell will say "Totals or something"
+  let firstCell = document.createElement('td');
+  trFooterElem.appendChild(firstCell);
+
+  let totalsRowArray = [];
+  // This footer will add up all of the hourly sales from every location
+  // outer loop hours
+  // inner loop cities
+  for(let i = 0; i < hours.length; i++){
+    // we need to reset our counter at each iteration in our outer loop
+    let currentTotal = 0;
+    for (let j = 0; j < allStores.length; j++){
+      currentTotal += allStores[j].cookiesPerHour[i];
+    }
+    totalsRowArray.push(currentTotal);
+    console.log(totalsRowArray);
+  }
+
+  let grandTotal = 0;
+  for(let i = 0; i < totalsRowArray.length; i++){
+    grandTotal += totalsRowArray[i];
+    let tdFootElem = document.createElement('td');
+    trFooterElem.appendChild(tdFootElem);
+    tdFootElem.textContent = totalsRowArray[i];
+  }
+  // The final cell will be a grand total of all locations daily sales
+  let lastCell = document.createElement('td');
+  trFooterElem.appendChild(lastCell);
+  lastCell.textContent = grandTotal;
+}
 
 // >>>>>>>> INVOKE OUR CONSTRUCTOR FUNCTION
 
@@ -99,6 +146,8 @@ let tokyo = new Store('Tokyo', 3, 24, 1.2);
 let dubai = new Store('Dubai', 11, 38, 3.7);
 let paris = new Store('Paris', 20, 38, 2.3);
 let lima = new Store('Lima', 2, 16, 4.6);
+
+renderHeader();
 
 // >>>>>>>>> INVOKE OUR METHODS
 
@@ -121,3 +170,8 @@ paris.render();
 lima.generateSales();
 lima.calculateTotal();
 lima.render();
+
+console.log(allStores)
+console.log(allStores[0].cookiesPerHour[0]);
+
+renderFooter();
