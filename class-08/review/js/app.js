@@ -14,6 +14,8 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// >>>>>> CONSTRUCTOR FUNCTION
+
 function Store(city, minCust, maxCust, avgCookies) {
   this.city = city;
   this.minCust = minCust;
@@ -22,6 +24,8 @@ function Store(city, minCust, maxCust, avgCookies) {
 
   allStores.push(this);
 }
+
+// >>>>>> PROTOTYPE METHODS
 
 Store.prototype.generateSales = function () {
   this.cookiesPerHour = [];
@@ -62,6 +66,8 @@ Store.prototype.render = function () {
 
 }
 
+// >>>>>>>> INVOKE OUR CONSTRUCTOR FUNCTION
+
 // Seattle	23	65	6.3
 // Tokyo	3	24	1.2
 // Dubai	11	38	3.7
@@ -73,6 +79,8 @@ let tokyo = new Store('Tokyo', 3, 24, 1.2);
 let dubai = new Store('Dubai', 11, 38, 3.7);
 let paris = new Store('Paris', 20, 38, 2.3);
 let lima = new Store('Lima', 2, 16, 4.6);
+
+// >>>>>>>>> INVOKE OUR METHODS
 
 seattle.generateSales();
 seattle.calculateTotal();
