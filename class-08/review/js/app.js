@@ -64,7 +64,27 @@ Store.prototype.render = function () {
   ulElem.appendChild(lastLiElem);
   lastLiElem.textContent = `Total: ${this.total}`;
 
+  // My table will have have a thead to start
+  // This will contain a table row
+  // Each cell of my table header will contain one of the hours from my array
+
+  // I will need a table body
+  // Each row will be for each city
+  // The first cell will be the name of my city
+  // The following cells will correspond with with the hour and contain sales from that hour
+  // My last cell will be the total of for that location's sales
+
+  // My table needs a footer
+  // I will need a row
+  // The first cell will say "Totals or something"
+  // This footer will add up all of the hourly sales from every location
+  // The final cell will be a grand total of all locations daily sales
+
 }
+
+// I will need a separate render function to render my table header
+
+// I will need a separate render function to render my table footer
 
 // >>>>>>>> INVOKE OUR CONSTRUCTOR FUNCTION
 
