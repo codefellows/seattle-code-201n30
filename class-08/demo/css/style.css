@@ -18,3 +18,68 @@ div {
   width: 50px;
   height: 50px;
 }
+
+#flex-start{
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#flex-end{
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#center{
+  flex-direction: row;
+  justify-content: center;
+}
+
+#space-between{
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#space-around{
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#space-evenly{
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#align-items-start{
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+#align-items-end{
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+#align-items-center{
+  flex-direction: row;
+  align-items: center;
+}
+
+#align-self div:nth-of-type(1){
+  align-self: flex-start;
+}
+
+#align-self div:nth-of-type(2){
+  align-self: center;
+}
+
+#align-self div:nth-of-type(3){
+  align-self: flex-end;
+}
+
+#align-self div:nth-of-type(4){
+  align-self: center;
+}
+
+#align-self div:nth-of-type(5){
+  align-self: flex-start;
+}
