@@ -1,5 +1,9 @@
 # HTML Forms and JS Events
 
+## [Whiteboard](https://www.figma.com/file/hp2QDzhbeiFMXaa9RLHh1a/events?node-id=2%3A194&t=jE7YDch3i7uZuYbW-1)
+
+## [Click Event Codepen](https://codepen.io/stephnitis/pen/zYLPwMV)
+
 ## Overview
 
 In this class you will be learn JavaScript Events and how they can bring interactivity to your application. You will also learn how to construct HTML forms.
