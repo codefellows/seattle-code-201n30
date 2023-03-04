@@ -61,7 +61,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 30%;
+  max-width: 40%;
   padding: 10px;
   background-color: aliceblue;
   margin: 20px auto;
@@ -70,13 +70,31 @@ form {
   border-radius: 5px;
 }
 
-legend {
-  font-size: 30px;
-  margin: 20px;
+fieldset {
+  border: 1px solid plum;
+  width: 80%;
+  padding: 20px;
+  margin-top: 20px;
 }
 
-input {
-  display: block;
+form fieldset:nth-of-type(1){
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+legend {
+  text-align: center;
+  font-size: 30px;
+}
+
+input[type="text"] {
+  margin: 10px;
+  width: 70%;
+  align-self: center;
+}
+
+input[type="checkbox"]{
   margin: 10px;
 }
 
