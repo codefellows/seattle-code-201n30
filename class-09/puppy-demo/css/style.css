@@ -1,0 +1,173 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Phudu', cursive;
+}
+
+.logo {
+  max-width: 50px;
+  height: auto;
+  border: none;
+}
+
+header {
+  display: flex;
+  max-width: fit-content;
+  margin: 1% auto;
+  align-items: center;
+}
+
+main {
+  min-height: 750px;
+}
+
+h1 {
+  font-family: 'Righteous', cursive;
+  display: inline-block;
+  font-size: 60px;
+  padding: 5px;
+  -webkit-text-stroke: 2px;
+  -webkit-text-stroke-color: rgb(246, 73, 246);
+}
+
+nav{
+  display: flex;
+  max-width: fit-content;
+  align-items: center;
+  margin: auto;
+}
+
+a {
+  color:aqua;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover {
+  color: plum;
+}
+
+
+h2 {
+  position: relative;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+  padding: 1%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 30%;
+  padding: 10px;
+  background-color: aliceblue;
+  margin: 20px auto;
+  color: black;
+  border: 10px solid plum;
+  border-radius: 5px;
+}
+
+legend {
+  font-size: 30px;
+  margin: 20px;
+}
+
+input {
+  display: block;
+  margin: 10px;
+}
+
+button {
+  background-color: plum;
+  padding: 10px;
+  border: 5px solid black;
+  border-radius: 5px;
+  font-family: 'Righteous', cursive;
+  font-size: 20px;
+  margin: 20px;
+}
+
+button:hover {
+  background-color: aqua;
+}
+
+section {
+  position: relative;
+  display: flex;
+  margin: 1% auto 2%;
+}
+
+article {
+  display: flex;
+  height: 700px;
+  width: 400px;
+  margin: auto;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid white;
+  text-align: center;
+  position: relative;
+}
+
+h3 {
+  font-family: 'Righteous', cursive;
+  font-size: 50px;
+  position: absolute;
+  padding: 5px;
+  -webkit-text-stroke: 2px;
+  -webkit-text-stroke-color: rgb(76, 189, 172);
+  width: 100%;
+  top: 5%;
+}
+
+div:first-of-type {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+div > img {
+  max-width: 70%;
+  border: 5px solid rgb(227, 95, 174);
+  border-radius: 5px;
+}
+
+div:last-of-type{
+  padding: 5px;
+  width: 90%;
+  position: absolute;
+  margin: auto 3%;
+  bottom: 15px;
+  background-color: aliceblue;
+  color: black;
+  border: 3px solid plum;
+  border-radius: 5px;
+}
+
+table {
+  position: relative;
+  border: 1px solid skyblue;
+  max-width: fit-content;
+  max-height: fit-content;
+  margin: 15%;
+  bottom: 5px;
+
+}
+
+th, td {
+  padding: 5px;
+  border: 1px solid skyblue;
+}
+
+p, li {
+  padding: 3px;
+  font-size: 15px;
+}
+
+footer {
+  text-align: center;
+  margin-bottom: 2%;
+}
