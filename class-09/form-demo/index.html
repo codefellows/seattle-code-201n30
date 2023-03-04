@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM & EVENTS</title>
+</head>
+<body>
+  <header></header>
+  <main>
+    <!--parent element: probably where we attach our event listener-->
+    <form id="my-form">
+      <!--section within form, how we group content-->
+      <fieldset>
+        <legend>Gives our fieldset context</legend>
+        <!--labels clarify what the input field is for and attach via for attribute-->
+        <!-- tether our label via for attribute and id on input-->
+        <label for="my-text-input">My Text Input</label>
+        <!--name attribute allows us to target that attribute on our event object-->
+        <input type="text" id="my-text-input" name="myTextInput">
+
+        <label>Nested Label
+          <input type="text">
+        </label>
+
+        <label>Number Input</label>
+        <input type="number" name="myNumber">
+
+        <label for="pets">Pet Options</label>
+        <select id="pets" name="myPets">
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Hippo">Hippo</option>
+          <option value="Option Value">Value</option>
+        </select>
+        <button type="submit">Submit</button>
+      </fieldset>
+
+    </form>
+  </main>
+  <footer></footer>
+  <script src="./js/app.js"></script>
+</body>
+</html>
