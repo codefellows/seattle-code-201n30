@@ -25,6 +25,35 @@
   </nav>
   <main>
     <!--Our client needs a form that is going to be modeled after our constructor function properties so they can add puppies-->
+    <form id="new-puppy">
+      <!--section to house my inputs-->
+      <fieldset>
+        <legend>Basic Information</legend>
+        <label for="puppy-name">Name</label>
+        <input type="text" id="puppy-name" name="puppyName">
+
+        <label for="interests">Comma Separated Interests</label>
+        <input type="text" id="interests" name="interests">
+
+        <label for="description">Description of Puppy</label>
+        <input type="text" id="description" name="description">
+
+        <label for="photo">Photo URL</label>
+        <input type="text" id="photo" name="photo">
+      </fieldset>
+      <fieldset>
+        <legend>Placement Information</legend>
+        <label for="isGoodWithDogs">Good With Dogs</label>
+        <input id="isGoodWithDogs" type="checkbox" name="isGoodWithDogs">
+
+        <label for="isGoodWithCats">Good With Cats</label>
+        <input id="isGoodWithCats" type="checkbox" name="isGoodWithCats">
+
+        <label for="isGoodWithKids">Good With Kids</label>
+        <input id="isGoodWithKids" type="checkbox" name="isGoodWithKids">
+      </fieldset>
+      <button type="submit">Add Puppy</button>
+    </form>
     <h2>Paw-lease Adopt One</h2>
     <section id="puppy-profiles">
     </section>

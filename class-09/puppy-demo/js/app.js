@@ -4,7 +4,10 @@
 
 let sectionElem = document.getElementById('puppy-profiles');
 let allPuppies = [];
-console.log('DO MY PUPPIES EXIST?', allPuppies);
+// console.log('DO MY PUPPIES EXIST?', allPuppies);
+
+// GRAB ELEMENT FOR OUR EVENT
+let puppyForm = document.getElementById('new-puppy');
 
 // >>>>>>> HELPER FUNCTION
 // taken from MDN <<<<<
@@ -99,6 +102,31 @@ Puppy.prototype.render = function(){
     row2.appendChild(tdElem3);
 }
 
+// DEFINE MY CALLBACK FUNCTION / EVENT HANDLER
+function handleSubmit(event){
+  event.preventDefault();
+  console.log('I AM LISTENING');
+
+  let puppyName = event.target.puppyName.value;
+  let interests = event.target.interests.value;
+  // split is a built in method that will return an array divided at the point we determine
+  interests = interests.split(',');
+  // console.log(interests);
+  let description = event.target.description.value;
+  let isGoodWithDogs = event.target.isGoodWithDogs.checked;
+  let isGoodWithCats = event.target.isGoodWithCats.checked;
+  let isGoodWithKids = event.target.isGoodWithKids.checked;
+  let photo = event.target.photo.value;
+  // console.log(photo);
+
+  let addedPuppy = new Puppy(puppyName, interests, description, isGoodWithDogs, isGoodWithCats, isGoodWithKids, photo);
+  // we must call any methods we need to render that new information
+  addedPuppy.getAge();
+  addedPuppy.render();
+
+  puppyForm.reset();
+}
+
 // >>>>>>> INSTANTIATE
 
 new Puppy('Woofles', ['zoomies', 'retrieving', 'snackies'], 'sweet chocolate lab puppy', true, true, true, 'img/woofles.jpg');
@@ -113,3 +141,8 @@ function renderAllPuppies(){
 }
 
 renderAllPuppies();
+
+// EVENT LISTENER
+// ATTACH LISTENER: PASS IN EVENT TYPE & CALLBACK FUNCTION AS ARGUMENTS
+
+puppyForm.addEventListener('submit', handleSubmit);
