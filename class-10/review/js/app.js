@@ -1,171 +1,178 @@
-'use strict';
+//branch class07-tables
 
-// >>>>>>> WINDOW INTO DOM
+//global variables
+let hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
+let cities = [];
 
-let salesTable = document.getElementById('sales-table');
-let tbodyElem = document.createElement('tbody');
-salesTable.appendChild(tbodyElem);
+//WINDOW into the DOM
+let container = document.getElementById('sales-table'); //this is the parent
+let tableElement = document.createElement('table');
+let tbodyElement = document.createElement('tbody'); // used to be within the render function, moving it outside of render created a single tbody tag
+tableElement.appendChild(tbodyElement);
 
-// I need a way to access my form
-// A way to listen for user submissions events
-// A function to handle that submission process
-// Submission process should handle creation of a new row
-// I will need to update my totals as well
 
-// >>>>>>> GLOBAL VARIABLES
-
-let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-let allStores = [];
-
-function randomNumber(min, max) {
+//taken from MDN to return random integer, inclusive range
+function estimateNumberOfCustomers(min,max){
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-
-function renderHeader(){
-
-  let theadElem = document.createElement('thead');
-  salesTable.appendChild(theadElem);
-
-  let trHeaderElem = document.createElement('tr');
-  theadElem.appendChild(trHeaderElem);
-
-  let thFirstCell = document.createElement('th');
-  trHeaderElem.appendChild(thFirstCell);
-
-  for(let i = 0; i < hours.length; i++){
-    let thElem = document.createElement('th');
-    trHeaderElem.appendChild(thElem);
-    thElem.textContent = hours[i];
-  }
-
-  let thFinalCell = document.createElement('th');
-  trHeaderElem.appendChild(thFinalCell);
-  thFinalCell.textContent = 'Total';
-}
-
-// >>>>>> CONSTRUCTOR FUNCTION
-
-function Store(city, minCust, maxCust, avgCookies) {
+//this is my constructor/class
+function City(city, minNumberOfCustomers, maxNumberOfCustomers, avgSales){
   this.city = city;
-  this.minCust = minCust;
-  this.maxCust = maxCust;
-  this.avgCookies = avgCookies;
-
-  allStores.push(this);
+  this.minNumberOfCustomers = minNumberOfCustomers;
+  this.maxNumberOfCustomers = maxNumberOfCustomers;
+  this.avgSales = avgSales;
+  this.render();
+  // cities.push(this);
 }
 
-// >>>>>> PROTOTYPE METHODS
-
-Store.prototype.generateSales = function () {
+//this is a method within City
+City.prototype.estimateCookieSales = function(){
+  this.sum = 0;
   this.cookiesPerHour = [];
-  for (let i = 0; i < hours.length; i++) {
-    let randomCustomers = randomNumber(this.minCust, this.maxCust);
-    this.cookiesPerHour.push(Math.floor(randomCustomers * this.avgCookies));
-  }
-}
-
-Store.prototype.calculateTotal = function () {
-  this.total = 0;
-  for (let i = 0; i < this.cookiesPerHour.length; i++) {
-    this.total += this.cookiesPerHour[i];
-  }
-}
-
-Store.prototype.render = function () {
-
-
-  let trBodyElem = document.createElement('tr');
-  tbodyElem.appendChild(trBodyElem);
-
-
-  let tdCityElem = document.createElement('td');
-  trBodyElem.appendChild(tdCityElem);
-  tdCityElem.textContent = this.city;
-
-  for (let i = 0; i < this.cookiesPerHour.length; i++) {
-    let tdSalesElem = document.createElement('td');
-    trBodyElem.appendChild(tdSalesElem);
-    tdSalesElem.textContent = this.cookiesPerHour[i];
-  }
-
-  let tdTotalElem = document.createElement('td');
-  trBodyElem.appendChild(tdTotalElem);
-  tdTotalElem.textContent = this.total;
-
-}
-
-
-function renderFooter(){
-
-  let tfootElem = document.createElement('tfoot');
-  salesTable.appendChild(tfootElem);
-
-  let trFooterElem = document.createElement('tr');
-  tfootElem.appendChild(trFooterElem);
-
-  let firstCell = document.createElement('td');
-  trFooterElem.appendChild(firstCell);
-
-  let totalsRowArray = [];
 
   for(let i = 0; i < hours.length; i++){
-    let currentTotal = 0;
+    let cookies = Math.ceil(this.avgSales * estimateNumberOfCustomers(this.minNumberOfCustomers,this.maxNumberOfCustomers));
+    this.cookiesPerHour.push(cookies);
+    this.sum += cookies;
 
-    for (let j = 0; j < allStores.length; j++){
-      currentTotal += allStores[j].cookiesPerHour[i];
-    }
-    totalsRowArray.push(currentTotal);
-    console.log(totalsRowArray);
   }
+};
+
+//thead table function
+function displayHeader(){
+  let tableHead = document.createElement('thead');
+  let tableHeadRow = document.createElement('tr');
+  container.appendChild(tableElement);
+  tableElement.appendChild(tableHead);
+  tableHead.appendChild(tableHeadRow);
+
+  let emptyCell = document.createElement('th');
+  tableHeadRow.appendChild(emptyCell);
+
+  for(let i = 0; i < hours.length; i++){
+    let thHours = document.createElement('th');
+    tableHeadRow.appendChild(thHours);
+    thHours.textContent = hours[i];
+  }
+
+  //from demo
+  let thTotalCell = document.createElement('th');
+  tableHeadRow.appendChild(thTotalCell);
+  thTotalCell.textContent = 'Totals';
+}
+
+//tbody table render
+City.prototype.render = function(){
+  this.estimateCookieSales();
+  let tableRow = document.createElement('tr');
+  tbodyElement.appendChild(tableRow);
+
+  let cityName = document.createElement('th');
+  cityName.textContent = this.city;
+  tableRow.appendChild(cityName);
+
+  //loops over cookiesPerHour for each city
+  for(let i = 0; i < hours.length; i++){
+    let cookieSales = document.createElement('td');
+    tableRow.appendChild(cookieSales);
+    cookieSales.textContent = this.cookiesPerHour[i];
+  }
+
+  //displays totals for each city
+  let cityTotals = document.createElement('td');
+  tableRow.appendChild(cityTotals);
+  cityTotals.textContent = this.sum;
+
+};
+
+let newCityForm = document.getElementById('add-new-location'); // this grabs a element in the DOM, giving us access to manipulate the DOM
+
+//event handler
+function handleSubmit(event){
+  event.preventDefault();
+  console.log(event);
+
+  let cityName = event.target.cityName.value;
+  let cityMin = +event.target.cityMin.value;
+  let cityMax = +event.target.cityMax.value;
+  let cityAvg = +event.target.cityAvg.value;
+
+  let newCity = new City(cityName, cityMin, cityMax, cityAvg);
+  console.log(newCity);
+
+  cities.push(newCity);
+
+  // newCity.estimateCookieSales();
+  // newCity.render();
+
+  // let tableFooter = document.querySelector('tfoot');
+  // tableFooter.remove();
+  // document.querySelector(tr:last-of-type);
+  // tableElem.deleteRow(-1);
+  document.querySelector('tfoot').remove();
+  displayFooter();
+}
+
+// tfoot function displays hourly totals
+function displayFooter(){
+  let totalsPerHour = [];
+  for(let i = 0; i < hours.length; i++){
+    let columnTotal = 0;
+    for(let j = 0; j < cities.length; j++){
+      columnTotal += cities[j].cookiesPerHour[i];
+    }
+    totalsPerHour.push(columnTotal); //when I had this within the above inner loop, totalsPerHour.length = hours.length * cookiesPerHour.length YIKES
+  }
+  console.log('first array', totalsPerHour);
+
+  let tableFooter = document.createElement('tfoot');
+  tableElement.appendChild(tableFooter);
+  let tableRowFooter = document.createElement('tr');
+  tableFooter.appendChild(tableRowFooter);
+
+  //this displays 'Total' in footer FROM DEMO
+  let firstCell = document.createElement('th');
+  tableRowFooter.appendChild(firstCell);
+  firstCell.textContent = 'Totals';
 
   let grandTotal = 0;
-  for(let i = 0; i < totalsRowArray.length; i++){
-    grandTotal += totalsRowArray[i];
-    let tdFootElem = document.createElement('td');
-    trFooterElem.appendChild(tdFootElem);
-    tdFootElem.textContent = totalsRowArray[i];
+  for(let i = 0; i < totalsPerHour.length; i++){
+    grandTotal += totalsPerHour[i];
+    let hourlyTotals = document.createElement('td');
+    tableRowFooter.appendChild(hourlyTotals);
+    hourlyTotals.textContent = totalsPerHour[i];
   }
 
-  let lastCell = document.createElement('td');
-  trFooterElem.appendChild(lastCell);
-  lastCell.textContent = grandTotal;
+  let tdGrandTotal = document.createElement('td');
+  tableRowFooter.appendChild(tdGrandTotal);
+  tdGrandTotal.textContent = grandTotal;
 }
 
-// >>>>>>>> INVOKE OUR CONSTRUCTOR FUNCTION
+//this is the instantiation of each object
+let seattle = new City('Seattle', 23, 65, 6.3);
+let tokyo = new City('Tokyo', 3, 24, 1.2);
+let dubai = new City('Dubai', 11, 38, 3.7);
+let paris = new City('Paris', 20, 38, 2.3);
+let lima = new City('Lima', 2, 16, 4.6);
+cities.push(seattle, tokyo, dubai, paris, lima);
 
-let seattle = new Store('Seattle', 23, 65, 6.3);
-let tokyo = new Store('Tokyo', 3, 24, 1.2);
-let dubai = new Store('Dubai', 11, 38, 3.7);
-let paris = new Store('Paris', 20, 38, 2.3);
-let lima = new Store('Lima', 2, 16, 4.6);
+//this calls the methods
+displayHeader();
 
-renderHeader();
+// function renderAllCities(){
+//   for(let i = 0; i < cities.length; i++){
+//     cities[i].estimateCookieSales();
+//     cities[i].render();
+//     console.log(cities[i]);
+//   }
+// }
 
-// >>>>>>>>> INVOKE OUR METHODS
+// renderAllCities();
 
-// possible area for refactor...
-seattle.generateSales();
-seattle.calculateTotal();
-seattle.render();
+displayFooter();
 
-tokyo.generateSales();
-tokyo.calculateTotal();
-tokyo.render();
+//event listener for submit
+newCityForm.addEventListener('submit', handleSubmit);
 
-dubai.generateSales();
-dubai.calculateTotal();
-dubai.render();
-
-paris.generateSales();
-paris.calculateTotal();
-paris.render();
-
-lima.generateSales();
-lima.calculateTotal();
-lima.render();
-
-console.log(allStores)
-console.log(allStores[0].cookiesPerHour[0]);
-
-renderFooter();
+// displayCities();
