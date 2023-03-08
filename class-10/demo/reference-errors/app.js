@@ -34,10 +34,10 @@ CookieStand.prototype.randomRate = function(){
     this.cookieSoldArray.push(Math.floor(this.aveCookies * (Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers)));
   };
   this.cookieSoldTotal = 0;
-  for(i in this.cookiesSoldArray){
+  for(let i in this.cookiesSoldArray){
     this.cookieSoldTotal += this.cookiesSoldArray[i];
   }
-  this.cookiesSoldArray.push(this.cookieSoldTotal);
+  this.cookieSoldArray.push(this.cookieSoldTotal);
 };
 
 CookieStand.prototype.createHourlyRateTable = function(){
@@ -112,7 +112,7 @@ function handleLocationSubmit(event) {
 
   let newCookieStand = new CookieStand(name,minCustomers,maxCustomers, aveCookies);
   state.allCookieStands.push(newCookieStand);
-  state.allCookieStands.push(newCookieStand.name);
+  state.allLocationsRef.push(newCookieStand.name);
 
   event.target.name.value = null;
   event.target.minCustomers.value = null;
