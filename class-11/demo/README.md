@@ -1,5 +1,13 @@
 # Grid & Goats
 
+## GRID
+
+- 2 Dimensional: design along two axis with much more control than flex
+- We define with columns and rows and how far we want an element to span those values
+- Flexible and responsive
+- Easy to use and also supported by most web browsers
+- Makes mark-up cleaner: you don't have to change the markup of an HTML element to change the position
+
 - [Grid Template Area Codepen](https://codepen.io/stephnitis/pen/XWPVVKY)
 - [Grid Standard Codepen](https://codepen.io/stephnitis/pen/XWPVVKY)
 - [Nested Grid and Flex Codepen](https://codepen.io/stephnitis/pen/QWVaaOq)
