@@ -27,3 +27,49 @@ You will need to store each anonymous vote, calculate totals, and visually displ
 To keep the product selection process as untainted as possible, you have been instructed to not allow any results to be shown to users until there have been a total of 15 selections made.
 
 The marketing team is not only interested in the total number of clicks, but also the percentage of times that an item was clicked when it was shown. So, you'll also need to keep track of how many times each image is displayed and do the calculations.
+
+### DOM References
+
+- Container to attach to event listener
+- DOM Manipulation: display the images
+- Button to generate results at the end
+- List to manipulate via DOM
+
+### Global Variables
+
+- Total votes / anonymous votes (15)
+- Array to hold our goats
+
+### Constructor Function
+
+- Image
+- Clicks: votes
+- Views
+- Name
+
+### Helper Functions
+
+- Randomly generate an index from our array
+- Render Function
+  - While loop: for making sure the two goats displayed are different
+
+### Event Handler
+
+- decrement vote count
+- Voting:
+  - for loop -> to determine which goat was clicked and increment votes
+  - if statement -> image clicked is true then we increment
+  - what do we need to be true?
+  - We’re comparing the value of the alt attribute to each index
+  - On each index each goat has a name that needs to match that value
+  - increment goat specific vote value
+- I want to stop users from being able to vote when this is 0
+  - if statement -> remove our event listener
+  - Display results -> dependent on decrementing that total votes value
+  - List -> to show votes and views of each goat
+linked to our button
+
+### Event Listener
+
+- click event: image (within container)
+- click event: button
