@@ -109,6 +109,7 @@ function handleShowResults() {
       resultsList.append(liElem);
     }
   }
+  resultsButton.style.display = 'none';
 }
 
 
