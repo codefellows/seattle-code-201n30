@@ -37,7 +37,7 @@ h1 {
 }
 
 #goats {
-  grid-column: 2/8;
+  grid-column: 4/8;
   grid-row: 2/4;
   background-color: lavender;
   border: 5px solid rgb(45, 2, 2);
@@ -54,21 +54,54 @@ h1 {
 .img-container > img {
   border: 5px solid rgb(45, 2, 2);
   border-radius: 5px;
-  width: 25%;
-  height: auto;
+  max-width: 40%;
+  max-height: 70%;
 }
 
 .results {
-    grid-column: 2/8;
-    grid-row: 4/5;
+    grid-column: 2/4;
+    grid-row: 2/6;
     background-color: ivory;
     border: 5px solid rgb(45, 2, 2);
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 .list-container{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  color: maroon;
+  font-weight: 800;
+  margin-bottom: 10px;;
+}
+
+ul {
+  margin-bottom: 20px;
+}
+
+li {
+  padding: 5px;
+  background-size: 20px;
+  list-style-type: circle;
+  /* list-style-image: url('../img/goat.png'); */
+}
+
+.chart-container {
+  grid-column: 4/8;
+  grid-row: 4/6;
+  background-color: lavender;
+  border: 5px solid rgb(45, 2, 2);
+  border-radius: 5px;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -83,6 +116,8 @@ button {
   color: maroon;
   font-weight: 800;
   margin: 10px;
+  height: 60px;
+  place-self: center;
 }
 
 button:hover {
@@ -92,13 +127,14 @@ button:hover {
   box-shadow: 10px 5px 5px rgb(45, 2, 2);
 }
 
-ul {
-  margin-bottom: 20px;
+canvas {
+  display: none;
 }
 
-li {
-  padding: 5px;
-  background-size: 20px;
-  list-style-type: circle;
-  /* list-style-image: url('../img/goat.png'); */
+footer {
+  grid-column: 2/8;
+  grid-row: 6/7;
+  background-color: ivory;
+  border: 5px solid rgb(45, 2, 2);
+  border-radius: 5px;
 }

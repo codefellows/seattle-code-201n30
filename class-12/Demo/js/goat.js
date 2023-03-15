@@ -18,16 +18,17 @@ let imgTwo = document.getElementById('img-two');
 let resultsButton = document.getElementById('results-button');
 let resultsList = document.getElementById('results-list');
 
+// >>>>>>> CHART JS REFERENCE
+
+const ctx = document.getElementById('results-chart')
+
 // >>>>>>> CONSTRUCTOR FUNCTION
 
-// utilizing default value for file extension
-// if nothing is passed in it will default to this value
-// if a value is passed in it will utilize that
 function Goat(name, fileExtension = 'jpg'){
   this.name = name;
   this.views = 0;
   this.votes = 0;
-  this.photo = `img/${name}.${fileExtension}`;
+  this.photo = `imgs/${name}.${fileExtension}`;
 
   state.allGoatsArray.push(this);
 };
@@ -46,24 +47,21 @@ let sweater = new Goat('sweater-goat');
 console.log(state.allGoatsArray);
 
 // >>>>>>> HELPER FUNCTIONS
-// Randomly generate an index
-// W3 Resources: Math.floor(Math.random()*items.length)
+
 function getRandomIndex(){
   return Math.floor(Math.random()*state.allGoatsArray.length);
 }
-// need this value to be within 0-7
-// console.log(getRandomIndex());
 
-// Render function
-// target the attribute of that img element to add the path
 function renderImgs(){
-  // how can I utilize that random number here?
+
   let indexOne = getRandomIndex();
   let indexTwo = getRandomIndex();
-  // while these two are equal we need to generate a new index
+
   while(indexOne === indexTwo){
     indexTwo = getRandomIndex();
   }
+
+  
 
   imgOne.src = state.allGoatsArray[indexOne].photo;
   imgOne.alt = state.allGoatsArray[indexOne].name;
@@ -76,11 +74,53 @@ function renderImgs(){
   console.log(state.allGoatsArray[indexTwo].views++);
 };
 
+// >>>>>>> FUNCTION TO RENDER CHART
+
+function renderChart(){
+  ctx.style.display = 'block';
+  let goatNames = [];
+  let goatVotes = [];
+  let goatViews = [];
+
+  for(let i = 0; i < state.allGoatsArray.length; i++){
+    goatNames.push(state.allGoatsArray[i].name);
+    goatVotes.push(state.allGoatsArray[i].votes);
+    goatViews.push(state.allGoatsArray[i].views);
+  }
+
+  let resultsChart = {
+    type: 'bar',
+    data: {
+      labels: goatNames,
+      datasets: [{
+        label: '# of Votes',
+        data: goatVotes,
+        borderWidth: 2,
+        backgroundColor: '#9BD0F5'
+      },
+      {
+        label: '# of Views',
+        data: goatViews,
+        borderWidth: 1
+      }
+    ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  }
+
+  new Chart(ctx, resultsChart);
+
+}
+
 // >>>>>>> EVENT HANDLERS
 function handleClick(event){
   voteCount--;
-  // pulling the information from the alt attribute on our target
-  // allows us to compare to our goat name
   let imgClicked = event.target.alt;
   for(let i = 0; i < state.allGoatsArray.length; i++){
     if(imgClicked === state.allGoatsArray[i].name){
@@ -88,10 +128,8 @@ function handleClick(event){
       console.log(imgClicked, state.allGoatsArray[i].votes);
     }
   }
-  // ensures that our images will regenerate on click
   renderImgs();
 
-  // stop votes
   if(voteCount === 0){
     imgContainer.removeEventListener('click', handleClick);
   }
@@ -99,20 +137,22 @@ function handleClick(event){
 };
 
 function handleShowResults(){
-  // display the results in a list: name views votes for each goat
-  // only work if the vote count is 0
+
   if(voteCount === 0){
     for(let i = 0; i < state.allGoatsArray.length; i++){
       let liElem = document.createElement('li');
       liElem.textContent = `${state.allGoatsArray[i].name} was shown ${state.allGoatsArray[i].views} and had ${state.allGoatsArray[i].votes} votes`
       resultsList.append(liElem);
     }
+    // I'm targeting the style attribute on my element
+    resultsButton.style.display = 'none';
+    renderChart();
   }
 }
 
 // >>>>>>> LISTENERS
 imgContainer.addEventListener('click', handleClick);
 resultsButton.addEventListener('click', handleShowResults);
-// >>>>>>> FUNCTION INVOCATIONS
 
+// >>>>>>> FUNCTION INVOCATIONS
 renderImgs();
