@@ -49,20 +49,55 @@ function getRandomIndex() {
 
 function renderImg() {
 
-  let indexOne = getRandomIndex();
-  let indexTwo = getRandomIndex();
-  let indexThree = getRandomIndex();
+  // let indexOne = getRandomIndex();
+  // let indexTwo = getRandomIndex();
+  // let indexThree = getRandomIndex();
 
-  while (indexOne === indexTwo) {
-    indexOne = getRandomIndex();
-  }
-  while (indexTwo === indexThree) {
-    indexTwo = getRandomIndex();
-  }
-  while (indexThree === indexOne) {
-    indexThree = getRandomIndex();
+  // while (indexOne === indexTwo) {
+  //   indexOne = getRandomIndex();
+  // }
+  // while (indexTwo === indexThree) {
+  //   indexTwo = getRandomIndex();
+  // }
+  // while (indexThree === indexOne) {
+  //   indexThree = getRandomIndex();
+  // }
+
+  let indices = [];
+
+  // as long as the array is less than 3 create a new index
+  while(indices.length < 3){
+    // we need to generate an initial value
+    let newIndex = getRandomIndex();
+    // if that value is not in our array
+    // indexOf() returns -1 when the value is NOT present
+    // if this statement is true PUSH value into our array
+    if (indices.indexOf(newIndex) === -1) {
+      indices.push(newIndex);
+    } else {
+      // otherwise generate a new value
+      newIndex = getRandomIndex();
+    }
   }
 
+  // while(indices.length < 3){
+  //   // as long as the array is less than 3 create a new index
+  //   let newIndex = getRandomIndex();
+  // includes just tells us whether or not the value is present
+  // putting a BANG ! in front to push or regenerating if it is present
+  //   if (indices.includes(newIndex)) {
+  //     newIndex = getRandomIndex();
+  //   } else {
+  //     indices.push(newIndex);
+  //   }
+  // }
+
+  // shift or pop will probably be more useful for your lab
+  let indexOne = indices.shift();
+  let indexTwo = indices.shift();
+  let indexThree = indices.shift();
+
+  // let indexOne = indices[0];
 
   imgOne.src = state.allProductsArray[indexOne].photo;
   imgOne.alt = state.allProductsArray[indexOne].name;
