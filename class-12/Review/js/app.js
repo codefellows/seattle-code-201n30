@@ -89,12 +89,12 @@ function renderImg() {
       indices.push(newIndex);
     }
   }
-
+  console.log(indices)
   // shift or pop will probably be more useful for your lab
   let indexOne = indices.shift();
   let indexTwo = indices.shift();
   let indexThree = indices.shift();
-
+  console.log(indices)
   // let indexOne = indices[0];
 
   imgOne.src = state.allProductsArray[indexOne].photo;
