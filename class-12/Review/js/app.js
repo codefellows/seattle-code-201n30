@@ -65,32 +65,30 @@ function renderImg() {
 
   let indices = [];
 
-  // as long as the array is less than 3 create a new index
-  while(indices.length < 3){
-    // we need to generate an initial value
-    let newIndex = getRandomIndex();
-    // if that value is not in our array
-    // indexOf() returns -1 when the value is NOT present
-    // if this statement is true PUSH value into our array
-    if (indices.indexOf(newIndex) === -1) {
-      indices.push(newIndex);
-    } else {
-      // otherwise generate a new value
-      newIndex = getRandomIndex();
-    }
-  }
-
+  // // as long as the array is less than 3 create a new index
   // while(indices.length < 3){
-  //   // as long as the array is less than 3 create a new index
+  //   // we need to generate an initial value
   //   let newIndex = getRandomIndex();
-  // includes just tells us whether or not the value is present
-  // putting a BANG ! in front to push or regenerating if it is present
-  //   if (indices.includes(newIndex)) {
-  //     newIndex = getRandomIndex();
-  //   } else {
+  //   // if that value is not in our array
+  //   // indexOf() returns -1 when the value is NOT present
+  //   // if this statement is true PUSH value into our array
+  //   if (indices.indexOf(newIndex) === -1) {
   //     indices.push(newIndex);
+  //   } else {
+  //     // otherwise generate a new value
+  //     newIndex = getRandomIndex();
   //   }
   // }
+
+  while(indices.length < 3){
+    // as long as the array is less than 3 create a new index
+    let newIndex = getRandomIndex();
+  // includes just tells us whether or not the value is present
+  // putting a BANG ! in front to push or regenerating if it is present
+    if (!indices.includes(newIndex)) {
+      indices.push(newIndex);
+    }
+  }
 
   // shift or pop will probably be more useful for your lab
   let indexOne = indices.shift();
