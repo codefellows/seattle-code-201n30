@@ -3,6 +3,7 @@
 // >>>>>> GLOBAL VARIABLES
 
 let voteCount = 25;
+let indices = [];
 
 const productNames = ['boots', 'bathroom', 'breakfast', 'bubblegum', 'chair', 'dog-duck', 'tauntaun', 'scissors', 'water-can', 'wine-glass', 'bag', 'banana', 'cthulhu', 'dragon', 'pen', 'pet-sweep', 'shark', 'sweep', 'unicorn'];
 
@@ -63,7 +64,7 @@ function renderImg() {
   //   indexThree = getRandomIndex();
   // }
 
-  let indices = [];
+
 
   // // as long as the array is less than 3 create a new index
   // while(indices.length < 3){
@@ -80,7 +81,7 @@ function renderImg() {
   //   }
   // }
 
-  while(indices.length < 3){
+  while(indices.length < 6){
     // as long as the array is less than 3 create a new index
     let newIndex = getRandomIndex();
   // includes just tells us whether or not the value is present
