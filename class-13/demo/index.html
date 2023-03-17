@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Goat Picker</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/goat.css">
+</head>
+<body>
+
+  <header class="header-section">
+    <div class="flex-container">
+      <img src="imgs/goat-logo.png" id="siteLogo" alt="Goat Picker">
+      <h1>Goat Picker</h1>
+    </div>
+  </header>
+
+    <main>
+      <section id="goats">
+        <div class="img-container">
+          <img id="img-one">
+          <img id="img-two">
+        </div>
+      </section>
+      <section class="results">
+        <div class="list-container">
+          <h2>Results List</h2>
+          <ul id="results-list"></ul>
+        </div>
+      </section>
+      <section class="chart">
+        <button id="results-button">View Results</button>
+        <canvas id="results-chart"></canvas>
+      </section>
+    </main>
+   <footer></footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/goat.js"></script>
+</body>
+</html>
