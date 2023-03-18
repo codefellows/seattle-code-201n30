@@ -33,15 +33,34 @@ function Goat(name, fileExtension = 'jpg'){
   state.allGoatsArray.push(this);
 };
 
-let cruising = new Goat('cruisin-goat');
-let float = new Goat('float-your-goat');
-let away = new Goat('goat-away');
-let hand = new Goat('goat-out-of-hand');
-let kissing = new Goat('kissing-goat');
-let sassy = new Goat('sassy-goat');
-let smiling = new Goat('smiling-goat');
-let sweater = new Goat('sweater-goat');
-// let goat = new Goat('goat', 'png')
+// LOCAL STORAGE RETRIEVAL
+// STEP THREE: GET DATA VIA THE KEY WE ASSIGNED
+let retrievedGoats = localStorage.getItem('goats');
+console.log('RETRIEVED GOATS', retrievedGoats);
+
+// STEP FOUR: PARSE - CONVERT DATA TO ORIGINAL FORMAT
+let parsedGoats = JSON.parse(retrievedGoats);
+// NOW THEY'RE IN THEIR ORIGINAL FORMAT
+console.log('PARSED ------>', parsedGoats);
+
+if(retrievedGoats){
+  state.allGoatsArray = parsedGoats;
+  // loop over goats if you have prototype methods
+  // if my one png name is equal to the current index
+  // pass that in separately through prototype with that file extension
+  // else run the rest through like in poke-demo
+} else {
+  let cruising = new Goat('cruisin-goat');
+  let float = new Goat('float-your-goat');
+  let away = new Goat('goat-away');
+  let hand = new Goat('goat-out-of-hand');
+  let kissing = new Goat('kissing-goat');
+  let sassy = new Goat('sassy-goat');
+  let smiling = new Goat('smiling-goat');
+  let sweater = new Goat('sweater-goat');
+  // let goat = new Goat('goat', 'png')
+}
+
 
 // proof of life
 console.log(state.allGoatsArray);
@@ -61,7 +80,7 @@ function renderImgs(){
     indexTwo = getRandomIndex();
   }
 
-  
+
 
   imgOne.src = state.allGoatsArray[indexOne].photo;
   imgOne.alt = state.allGoatsArray[indexOne].name;
@@ -132,6 +151,14 @@ function handleClick(event){
 
   if(voteCount === 0){
     imgContainer.removeEventListener('click', handleClick);
+    // LOCAL STORAGE PROCESS BEGINS
+    // STEP ONE: STRINGIFY
+    let stringifiedGoats = JSON.stringify(state.allGoatsArray);
+    // console.log(stringifiedGoats)
+    // https://jsonformatter.org/
+
+    //STEP TWO: STORE / SET ITEM WITH KEY VALUE PAIR
+    localStorage.setItem('goats', stringifiedGoats);
   }
   console.log(voteCount);
 };
