@@ -1,5 +1,7 @@
 # Application State with Local Storage API
 
+## [WHITEBOARD](https://www.figma.com/file/bX1PV3RdWbCamXE8H0qkZ2/local-storage?node-id=0%3A1&t=sp4natWp5C8OHzuR-1)
+
 ## Overview
 
 In this class you will are going to be introduced the concept of persisting application state with local storage.
