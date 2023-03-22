@@ -1,5 +1,9 @@
 # CSS Animations
 
+## [In Class Transitions Codepen](https://codepen.io/stephnitis/pen/YzOjEQw)
+
+## [In Class Keyframes Codepen](https://codepen.io/stephnitis/pen/oNPawmv)
+
 [Article on CSS Transforms](http://learn.shayhowe.com/advanced-html-css/css-transforms/)
 
 [Article on CSS Transitions & Animations](http://learn.shayhowe.com/advanced-html-css/transitions-animations/)
@@ -19,3 +23,5 @@
 [Pure CSS Bounce Animation](http://codepen.io/dp_lewis/pen/gCfBv)
 
 Feel free to experiment and utilize CSS animations in your projects!
+
+
