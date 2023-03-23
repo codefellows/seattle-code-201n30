@@ -6,6 +6,8 @@ const state = {
   cart: null,
 };
 
+let quantityInCart = 0;
+
 // Cart constructor.
 const Cart = function(items) {
   // this.items is an array of CartItem instances.
@@ -34,9 +36,15 @@ Cart.prototype.removeItem = function(item) {
 Cart.prototype.updateCounter = function() {
   // TODO: Update the cart count in the header nav with the number of items in the Cart
   //potentially address the itemCount element in my cart
-  let count = document.getElementById('itemCount');
-  count.textContent = this.items.length;
-  console.log(this.items);
+  // let count = document.getElementById('itemCount');
+  // count.textContent = this.items.length;
+  // console.log(this.items);
+
+  for(let i = 0; i < this.items.length; i++){
+    quantityInCart += +this.items[i].quantity;
+  }
+
+  document.getElementById('itemCount').textContent = quantityInCart
 }
 
 // somehow tied to my form??

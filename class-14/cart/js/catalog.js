@@ -82,11 +82,13 @@ function updateCartPreview() {
 
   // TODO: Add a new element to the cartContents div with that information
   let cartContents = document.getElementById('cartContents');
-  let listElem = document.createElement('ul');
-  cartContents.appendChild(listElem);
-  let liElem = document.createElement('li');
-  liElem.textContent = `${quantity} ${product}`;
-  listElem.appendChild(liElem);
+  let itemElem = document.createElement('p');
+  cartContents.appendChild(itemElem);
+  if( quantity === 1 || product === 'Boots' || product === 'Wine Glass'){
+    itemElem.textContent = `${quantity} ${product}`;
+  } else {
+    itemElem.textContent = `${quantity}: ${product}s`;
+  }
 
 }
 
