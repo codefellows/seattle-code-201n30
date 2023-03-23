@@ -20,17 +20,23 @@ Cart.prototype.addItem = function(product, quantity) {
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  localStorage.setItem('cart', JSON.stringify(this.items));
 };
 
 Cart.prototype.removeItem = function(item) {
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
+
+  // maybe array methods -> you could use maybe splice
+  // you could potentially utilize filter()
 };
 
 Cart.prototype.updateCounter = function() {
   // TODO: Update the cart count in the header nav with the number of items in the Cart
-
   //potentially address the itemCount element in my cart
+  let count = document.getElementById('itemCount');
+  count.textContent = this.items.length;
+  console.log(this.items);
 }
 
 // somehow tied to my form??

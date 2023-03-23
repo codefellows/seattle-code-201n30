@@ -19,11 +19,12 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-  
+
 }
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/className
 
   // TODO: Find the table body
 
@@ -35,6 +36,10 @@ function showCart() {
 }
 
 function removeItemFromCart(event) {
+  // how might you target possibly an index from your table?
+  // how might you assign a class to use? or potentially
+  // https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage

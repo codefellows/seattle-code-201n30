@@ -3,7 +3,28 @@
 'use strict';
 
 // Set up an empty cart for use on this page.
-state.cart = new Cart([]);
+// state.cart = new Cart([]);
+// this.items -> from localStorage
+// let items = localStorage.getItem('cart');
+// unstringify -> this.items
+
+// TERNARY -> shorthand if else // we are reinstantiating here
+// state.cart = localStorage.cart ? new Cart(JSON.parse(localStorage.cart)) : new Cart([]);
+
+if (localStorage.cart) {
+  state.cart = new Cart(JSON.parse(localStorage.cart));
+  state.cart.updateCounter();
+  updateCartPreview();
+} else {
+  state.cart = new Cart([]);
+}
+
+// if (state.cart){
+//   state.cart.updateCounter();
+//   updateCartPreview();
+// }
+
+console.log(state.cart)
 
 // On screen load, we call this method to put all of the product options
 // (the things in the state.allProducts array) into the drop down list.
@@ -30,7 +51,6 @@ function handleSubmit(event) {
 
   // Do all the things ...
   addSelectedItemToCart();
-
   state.cart.saveToLocalStorage();
   state.cart.updateCounter();
   // updateCartPreview(state.cart.items[state.cart.items.length - 1]);
@@ -67,7 +87,6 @@ function updateCartPreview() {
   let liElem = document.createElement('li');
   liElem.textContent = `${quantity} ${product}`;
   listElem.appendChild(liElem);
-
 
 }
 
