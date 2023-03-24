@@ -30,20 +30,24 @@ function clearCart() {
   }
 }
 
-// TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
-function showCart() {
-  // TODO: Find the table body
-  const tbody = document.querySelector('#cart tbody');
-  // TODO: Iterate over the items in the cart
-  for(let i = 0; i < state.cart.items.length; i++){
-    // TODO: Create a TR -> our row
-    let tr = document.createElement('tr');
-    tr.className = state.cart.items[i].product;
-    // TODO: Create a TD for the delete link
-    // let deleteLink = document.createElement('button');
 
-    let deleteLink = document.createElement('td');
+function showCart() {
+
+  const tbody = document.querySelector('#cart tbody');
+
+  for(let i = 0; i < state.cart.items.length; i++){
+    let tr = document.createElement('tr');
+
+    // >>>>>>> FOR PARENT NODE SOLUTION
+    // tr.className = state.cart.items[i].product;
+    // let deleteLink = document.createElement('td');
     // deleteLink.classList.add('deleteButton');
+    // deleteLink.textContent = 'x';
+    // tr.appendChild(deleteLink);
+
+    // >>>>>>> FOR DELETE BUTTON SOLUTION
+    let deleteLink = document.createElement('button');
+    deleteLink.classList.add('deleteButton');
     deleteLink.id = i;
     deleteLink.textContent = 'x';
     tr.appendChild(deleteLink);
@@ -57,34 +61,31 @@ function showCart() {
     let productCell = document.createElement('td');
     productCell.textContent = state.cart.items[i].product;
     tr.appendChild(productCell);
-    // TODO: Add the TR to the TBODY and each of the TD's to the TR
+
     tbody.appendChild(tr);
   }
 }
 
+
+
 function removeItemFromCart(event) {
-  // how might you target possibly an index from your table?
-  // how might you assign a class to use? or potentially
-  // https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode
-  // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
-  // let deleteButtons = document.querySelectorAll('deleteButton')
-  // for(let i = 0; i < deleteButtons.length; i++){
-  //   deleteButtons[i].addEventListener('click', state.cart.removeItem);
-  // }
+
+  // >>>>>>> FOR JAYE'S BRILIANT MASTER PLAN
   // let targetId = event.target.id;
-  // console.log(targetId);
-  // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+  // let deleteButtons = document.querySelectorAll('deleteButton');
+  // for(let i = 0; i < deleteButtons.length; i++){
+  //   deleteButtons[i].addEventListener('click', removeItemFromCart);
+  // }
   // state.cart.removeItem(targetId);
-  // TODO: Save the cart back to local storage
-  console.log(event.target.innerHTML);
-  console.log(event.target.parentNode.className);
+  // renderCart();
+
+  // >>>>>> FOR PARENT NODE SOLUTION
   if(event.target.innerHTML === 'x'){
     let productName = event.target.parentNode.className;
     state.cart.removeItem(productName);
     renderCart();
   }
 
-  // TODO: Re-draw the cart table
 
 }
 
