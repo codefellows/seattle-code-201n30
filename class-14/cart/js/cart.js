@@ -71,20 +71,20 @@ function showCart() {
 function removeItemFromCart(event) {
 
   // >>>>>>> FOR JAYE'S BRILIANT MASTER PLAN
-  // let targetId = event.target.id;
-  // let deleteButtons = document.querySelectorAll('deleteButton');
-  // for(let i = 0; i < deleteButtons.length; i++){
-  //   deleteButtons[i].addEventListener('click', removeItemFromCart);
-  // }
-  // state.cart.removeItem(targetId);
-  // renderCart();
+  let targetId = event.target.id;
+  let deleteButtons = document.querySelectorAll('deleteButton');
+  for(let i = 0; i < deleteButtons.length; i++){
+    deleteButtons[i].addEventListener('click', removeItemFromCart);
+  }
+  state.cart.removeItem(targetId);
+  renderCart();
 
   // >>>>>> FOR PARENT NODE SOLUTION
-  if(event.target.innerHTML === 'x'){
-    let productName = event.target.parentNode.className;
-    state.cart.removeItem(productName);
-    renderCart();
-  }
+  // if(event.target.innerHTML === 'x'){
+  //   let productName = event.target.parentNode.className;
+  //   state.cart.removeItem(productName);
+  //   renderCart();
+  // }
 
 
 }

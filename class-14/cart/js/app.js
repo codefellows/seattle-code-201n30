@@ -41,7 +41,6 @@ Cart.prototype.updateCounter = function() {
 
   // let count = document.getElementById('itemCount');
   // count.textContent = this.items.length;
-  // console.log(this.items);
 
   for(let i = 0; i < this.items.length; i++){
     quantityInCart += +this.items[i].quantity;
