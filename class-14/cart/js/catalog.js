@@ -14,11 +14,13 @@
 if (localStorage.cart) {
   state.cart = new Cart(JSON.parse(localStorage.cart));
   state.cart.updateCounter();
-  updateCartPreview();
+  for (let i = 0; i < state.cart.items.length; i++){
+    updateCartPreview(state.cart.items[i]);
+  }
 } else {
   state.cart = new Cart([]);
 }
-
+console.log(state.cart);
 // if (state.cart){
 //   state.cart.updateCounter();
 //   updateCartPreview();
@@ -54,8 +56,8 @@ function handleSubmit(event) {
   state.cart.saveToLocalStorage();
   state.cart.updateCounter();
   // updateCartPreview(state.cart.items[state.cart.items.length - 1]);
-  // updateCartPreview(state.cart.items.pop());
-  updateCartPreview();
+  updateCartPreview(state.cart.items.pop());
+  // updateCartPreview();
 
 }
 
@@ -72,10 +74,10 @@ function addSelectedItemToCart() {
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
-function updateCartPreview() {
+function updateCartPreview(item) {
   // console.log('POP ---->', state.cart.items.pop());
   // TODO: Get the item and quantity from the form
-  let item = state.cart.items.pop();
+  // let item = state.cart.items.pop();
   let product = item.product;
   let quantity = item.quantity;
   console.log(product, quantity);
